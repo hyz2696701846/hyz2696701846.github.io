@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          狐钥知的Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.ruozedata.com/article/MySQL知识点/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_bg.jpg')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                        </div>
+                        <h1></h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by 狐钥知 on
+                            2019-12-12
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">狐钥知的Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="mysql数据库知识点">Mysql数据库知识点</h1>
+<h2 id="数据库的基本概念">数据库的基本概念</h2>
+<pre><code>1. 数据库的英文单词: DataBase简称: DB
+2. 什么数据库?
+	* 用于存储和管理数据的仓库。
+3. 数据库的特点:
+	* 持久化存储数据的。其实数据库就是一个文件系统
+	* 方便存储和管理数据
+	* 使用了统一的方式操作数据库-- SQL  
+</code></pre>
+<h2 id="mysql数据库软件">MySQL数据库软件</h2>
+<pre><code>1. 安装
+	* 参见《MySQL基础. pdf》
+2. 卸载
+	1. 去mysql的安装目录找到my. ini文件单复制datadir=&quot;C:/ProgramData/MySQL/MySQL Server5.5/Data/&quot;
+	2. 卸载MySQL
+	3. 删除C:/ProgramData目录 下的MySQL文件夹。
+3. 配置:
+	* MySQL服务启动
+		1. 手动。
+		2. cmd--&gt; services .msc打开服务的窗口
+		3. 使用管理员打开cmd
+			* net start mysql :启动mysql的服务*  
+			* net stop mysql :关团mysql服务
+	* MySQL登录
+		1. mysql -uroot - p密码
+		2. mysql -hip -uroot -p连接目标的密码
+		3. mysql --host=ip --user=root --password=连接目标的密码 
+	* MySQL退出
+		1. exit
+		2. quit
+	* MySQL目录结构
+		1. MySQL安装目录
+			*配置文件my.ini
+		2. MySQL数据目录
+			* 几个概念
+			* 数据库:文件夹
+			* 表:文件*数据:
+</code></pre>
+<h2 id="sql">SQL</h2>
+<pre><code>1. 什么是SQL ?
+	Structured Query Language :结构化查询语言
+	其实就是定义了操作所有关系型数据库的规则。每一种数据库操作的方式存在不一样的地方，称为“方言”
+2. SQL通用语法
+	1. SQL语句可以单行或多行书写,以分号结尾。
+	2. 2.可使用空格和缩进来增强语句的可读性。
+	3. MySQL 数据库的SQL语句不区分大小写，关键字建议使用大写。
+	4. 3种注释
+		*争行注释: --注释内容或#注释内容(mysql特有)
+		*多行注释: /*注释*/
+3. SQL分类
+	1. DDL(Data Definition Language )数据定义语言
+		用来定义数据库对象:数据库，表，列等。关键字: create, drop,alter 等2) 
+	2. DML(Data Manipulation Language )数据操作语言
+		用来对数据库中表的数据进行增删改。关键字: insert, delete, update 等3) 
+	3. DQL(Data Query Language)数据查询语言
+		用来查询数据库中表的记录(数据)。关键字: select, where等
+	4. DCL(Data Control Language )数据控制语言(了解)
+      	用来定义 数据库的访问权限和安全级别，及创建用户。关键字: GRANT,REVOKE等
+</code></pre>
+<h3 id="ddl-操作数据库-表">DDL :操作数据库、表</h3>
+<pre><code>1. 操作数据库: CRUD
+	1. C(Create):创建
+		* 创建数据库:
+			* create database 数据库名称;
+		* 创建数据库，判断不存在，再创建:
+			* create database if not exists 数据库名称;
+		* 创建数据库,并指定字符集
+			* create database 数据库名称 character set 字集名;
+		* 练习:创建db4数据库，判断是否存在，并制定字符集为gbk
+  			* create database if not exists db4 character set gbk;
+	2. R(Retrieve) :查询
+		* 查询所有数据库的名称:
+			* show databases ;
+		* 查询某个故据库的字符集:查询某个数据库的创建语句
+			* show create datdpase 数据库名称;
+	3. U(Update):修改
+		* 单修改数据库的字符集
+			* alter database 数据库名称character set字符集名称;
+	4. D(Delete): 删除
+		* 删除数据库
+			* drop database 数据库名称;
+		* 判断故据库存在，存在再删除	
+			* drop database if exists 数据库名称;
+	5. 使用数据库
+		* 查询当前正在使用的数据库名称
+			* select database( );
+		* 使用数据库
+			* use数据库名称;
+2. 操作表
+      1. C(Create); 创建
+      	1. 语法:
+      		create table 表名(
+      		列名1数据类型1,
+			列名2数据类型2,
+			列名n数据类型n
+			);
+			* 注意:最后一列，不需要加逗号(,)
+			* 数据库类型:
+      			1. int :整数类型
+      				age int,
+				2. double:小数类型
+					score double(5,2)
+      			3. date: 日期，只包含年月日，yyyy -M-dd
+      			4. datet ime :日期，包含年月日时分秒yyyy-M-dd H:mm:ss
+      			5. timestamp: 时间错类型包含年月 日时分秒  yyyy-M-ddHH:mm:Ss
+      				* 如果将来不给这个字段赋值，或赋值为null,则默认使用当前的系统时间，来自动赋值
+      			6. varchar :字符串
+      				* name varchar(20):姓名最大20个字符
+      				* zhangsan 8个字符 张三2个字符
+
+			* 创建表
+				create table student(
+					id int,
+					name varchar(32),
+					age int，
+					score double(4,1),
+					birthday date，
+					insert. time timestamp
+					);
+			* 复制表:
+				* create table表名like 被复制的表名;
+		2. R(Retrieve) :查询
+			* 查询某个数据库中所有的表名称
+				* show tables;
+			* 查询表结构
+				* desc表名;
+		3. U(Update):修改
+			* 修改表名
+		      	* alter table 表名rename to新的表名;
+		    * 修改表的字符集
+		      	* alter table 表名 character set 字符集名称;
+			* 添加一列
+		      	* alter table 表名 add 列名 数据类型;
+			* 修改列名称类型
+		      	* alter table 表名 change 列名 新列名 新数据类型;
+				* alter table表名modify 列名新数据类型;
+			* 删除列
+		      	* alter table 表名drop 列名;汇
+		4. D(Delete): 删除
+			* drop table 表名 ;
+			* drop  table  if exists 表名
+</code></pre>
+<h3 id="dml-增删改表中数据">DML :增删改表中数据</h3>
+<pre><code>1. 添加数据:
+	* 语法:
+		* insert into 表名(列名1,列名2,.. .列名n) values(值1 ,值2,...值n);
+	* 注意:
+		1. 列名和值要- -一 对应。
+		2. 如果表名后，不定义列名，则默认给所有列添加值
+			* insert into表名values(值1,值2....值n);
+		3. 除了数字类型，其他类型需要使用引号(单双都可以)引起来
+2. 删除数据:
+	* 语法:
+		* delete from 表名[where 条件]
+	* 注意:
+		1. 如果不加条件，则删除表中所有记录。
+		2. 如果要删除所有记录
+			1. delete from 表名; --不推荐使用。有多少条记录就会执行多少次删除操作
+			2. TRUNCATE TABLE 表名; --推荐使用，效率更高先删除表，然后再创建一张一样的表。
+3. 修改数据:
+	* 语法:
+		* update 表名set 列名1 =值1,列名2 =值2.... [where 条件];
+	* 注意:
+		1. 如果不加任何条件，则会将表中所有记录全部修改。I
+</code></pre>
+<h3 id="dql-查询表中的记录">DQL :查询表中的记录</h3>
+<pre><code>* select * from 表名;
+
+1. 语法:
+	select
+		字段列表
+	from
+		表名列表
+	where
+		条件列表
+	group by_
+		分组字段
+	having
+		分组之后的条件
+	order by
+		排序
+	limit_
+		分页限定
+2. 查询语句
+	1. 基础查询
+		1. 多个字段的查询
+			select字段名1,字段名2... from 表名;
+			* 注意:
+				* 如果查询所有字段，则可以使用*来替代字段列表。
+		2. 去除重复:
+			* distinct
+		3. 计算列
+			* 一般可以使用四则运算计算一些列的值。 (- -般只会进行数值型的计算)
+			* ifnull(表达式1 ,表达式2) : null参与的运算，计算结果都为null
+				* 表达式1：哪个字段需要判断是否为null
+				* 表达式2：如果该字段为nul1后的替换值。
+		4. 起别名:
+	    	* as : as也可以省略
+	2. 条件查询
+		1. where子句后跟条件
+		2. 运算符
+			* &gt; 、&lt; 、&lt;= 、&gt;= 、= 、&lt;&gt;
+			* BETWEEN. . .AND
+			* IN(集合)
+			* LIKE :模糊查询
+			* IS NULL
+			* and 或 &amp;&amp;
+			* or 或 ||
+			* not 或 ！
+	3. 聚合函数:将一列数据作为一个整体，进行纵向的计算。
+		1. count :计算个数
+			1. 一般选择非空的列:主键
+			2. count(*)
+		2. max:计算最大值
+		3. min:计算最小值
+		4. sum:计算和
+		5. avg:计算平均值
+		注意:聚合函数的计算，排除null值。
+			解决方案;
+				1.选择不包含非空的列进行计算
+				2. IFNULL函数
+
+	4. 分组查询:
+		1. 语法: group by分组字段;
+		2. 注意:
+			1. 分组之后查询的字段:分组字段、聚合函数
+			2. where 和having 的区别?
+				1. where 在分组之前进行限定，如果不满足条件，则不参与分组。having在分组之 后进行限定，如果不满足结果，则不会被查询出来
+				2. where 后不可以跟聚合函数，having可以进行聚合函数的判断。
+	5. 排序查询
+		* 语法: order by子句
+			* order by排序字段1排序方式1，排序字段2 排序方式2...
+		* 排序方式:
+			* ASC:升序，默认的。
+			* DESC:降序。
+		* 注意:
+			* 如果有多个排序条件，则当前边的条件值一-样时，才会判断第二条件。
+				select * from stu order by Math ASC, English DESC;
+				先按照数学成绩升序排名，如果数学成绩一样，按照英语成绩降序排名
+	6. 分页査洵
+		1. 语法: limit幵始的索引,毎頁査洵的条数;
+		2. 公式:幵始的索引=(当前的頁磆-1)*毎更湿示的条数
+			毎頁呈示3条記彖
+				SELECT * FROM student LIMIT 0,3; --第1頁
+				SELECT * FROM student LIMIT 3,3; --第2更
+				SELECT * FROM student LIMIT 6,3; --第3萸
+		3. limit 是一个MySQL&quot;方言&quot;|
+</code></pre>
+<h2 id="约束">约束</h2>
+<pre><code>1. 概念:对表中的数据进行限定， 保证数据的正确性、有效性和完整性。
+2. 分类:
+1. 主键约束: primary key
+	1. 注意:
+		1. 含义:非空且唯一
+		2. 一张表只能有一个字段为主键3.主键就是表中记录的唯一标识
+	2. 在创建表时，添加主键约束
+		create table stu(
+			id int primary key,-- 给id添加主键约束name varchar(20)
+		);
+	3. 删除主键
+		--错误-alter table stu modify id int ;ALTER TABLE stu DROP PRIMARY KEY;
+	4. 创建完表后，添加主键
+		ALTER TABLE stu MODIFY id INT PRIMARY KEY;
+	5. 自动增长
+		1. 概念:如果某一-列是数值类型的，使用auto_increment可以来完成值得自动增长
+		2. 在创建表时，添加主键约束，并且完成主键自增长
+			create table stu(
+				id int primary key auto_ increment,-- 给id添加主键约束name varchar(20));
+			);
+		3. 删除自动增长
+			ALTER TABLE stu MODIFY id INT;
+		4. 添加自动增长
+			ALTER TABLE stu MODIFY id INT AUTO INCREMENT;
+
+2. 外键约束: foreign key 让表于表产生关系，从而保证数据的正确性。
+	1. 在创建表时，可以添加外键
+		* 语法:
+			create table 表名(
+				外键列
+				constraint 外键名称 foreign key (外键列名称) references 主表名称(主表列名称)
+			);
+	2. 删除外键
+		ALTER TABLE 表名DROP FOREIGN KEY外键名称;
+	3. 创建表之后，添加外键
+		ALTER TABLE 表名ADD CONSTRAINT外键名称FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称);
+	4. 级联操作
+		1. 分类:
+			1. 级联更新: ON UPDATE CASCADE
+			2. 级联删除: ON DELETE CASCADE
+		2. 添加级联操作
+			语法:
+				ALTER TABLE 表名ADD CONSTRAINT 外键名称
+				FOREIGN KEY (外键字段名称) REFERENCES 主表名称(主表列名称) 
+				ON UPDATE CASCADE ON DELETE CASCADE ;
+	
+3. 非空约束: not null 值不能为null
+	1. 创建表时添加约束
+		CREATE TABLE stu(
+			id INT,
+			NAME VARCHAR(20) NOT NULL -- name为非空
+		);
+  	2. 创建表完后，添加非空约束
+		ALTER TABLE stu MODIFY NAME VARCHAR(20) NOT NULL ;
+  	3. 删除name的非空约束
+  		ALTER TABEE stu MODIFY NAME VARCHAR(20);
+
+4. 唯一约束: unique 值不能重复
+	1. 创建表时，添加唯一-约束
+		CREATE TABLE stu(
+			id INT,
+			phone_number VARCHAR(20) UNIQUE -- 添加了唯一约束
+		);
+	* 注意mysql中，唯一约束限定的列的值可以有多个null
+	2. 删除唯一约束
+		ALTER TABLE stu DROP INDEX phone_number ;
+	3. 在创建表后，添加唯一约束
+		ALTER TABLE stu MODIFY phone_ number VARCHAR(20) UNIQUE;
+</code></pre>
+<h2 id="数据库的设计">数据库的设计</h2>
+<pre><code>1. 多表之间的关系
+	1. 分类
+		1. 一对一(了解) :
+			* 如:人和身份证
+			* 分析:一个人只有一个身份证，-个身份证只能对应一个人
+		2. 一对多(多对一) :
+	 		* 如:部门和员工
+	  		* 分析:一个部门有多个员工，-个员工只能对应一个部门
+	  	3. 多对多:
+			* 如:学生和课程
+			* 分析:一个学生可以选择很多门课程，-个课程也可以被很多学生选择
+	2. 实现关系:
+		1.  一对多(多对一) :
+			* 如:部门和员工
+			* 实现方式:在多的一方建立外键，指向一的- -方的主键。
+		2. 多对多:
+			* 如:学生和课程
+			* 实现方式:多对多关系实现需要借助第三张中间表。
+			中间表至少包含两个字段，这两个字段作为第三张表的外键，分别指向两张表的主键，中间表使用两张表的主键作为联合主键
+		3. 一对一(了解) :
+			*如:人和身份证
+			*实现方式:一对一关系实现，可以在任意-方添加唯一 外键指向另一  方的主键。
+2. 数据库设计的范式
+	1. 概念:设计数据库时，需要遵循的-些规范。要遵循后边的范式要求，必须先遵循前边的所有范式要求
+
+		设计关系数据库时，遵从不同的规范要求，设计出合理的关系型数据库，这些不同的规范要求被称为不同的范式，各种范式呈递次规范，越高的范式数据库冗余越小。
+
+		目前关系数据库有六种范式:第一范式(1NF)、第二范式(2NF)、第三范式(3NF)、巴斯-科德范式(BCNF) 、第四范式(4NF)和第五范式(5NF,又称完美范式)。事
+	2. 函数依赖
+		1. 函数依赖: A--&gt;B ,如果通过A属性(属性组)的值，可以确定唯一B属性的值。则称B依赖于A
+			例如:学号--&gt;姓名。(学号， 课程名称) --&gt; 分数
+		2. 完全函数依赖: A--&gt;B，如果A是一个属性组, :则B属性值的确定 要依赖于A属性组中所有的属性值。
+			例如: (学号，课程名称) --&gt; 分数
+		3. 部分函数依赖: A--&gt;B，如果A是一个属性组，则B属性值的确定只需要依赖于A属性组中某一些值即可。
+			例如: (学号，课程名称) -- &gt;姓名
+		4. 传递函数依赖: A--&gt;B, B -- &gt;C，如果通过A性(属性组)的值，可以确定唯一B)属性的值， 在通过B属性(属性组)的值可以确定唯一C属性的值，则称C传递函数依赖于A
+			例如:学号--&gt;系名，系名--&gt;系主任
+		5. 码:如果在一张表中，一个属性或属性组，被其他所有属性所完全依赖，则称这个属性(属性组)为该表的码
+			例如:该表中码为: (学号，课程名称)
+			* 主属性:码属性组中的所有属性
+			* 非主属性:除过码属性组的属性
+
+	3. 分类:
+		1. 第一范式(1NF) :每一列都是不可分割的原子数据项
+		2. 第二范式(2NF) : 在1NF的基础上，非码属性必须完全依赖于候选码(在1NF 基础上消除非主属性对主码的部分函数依赖)
+		3. 第三范式(3NF) :在2NF基础.上,任何非主属性不依赖于其它非主属性(在2NF基础上消除传递依赖)
+</code></pre>
+<h2 id="数据库的备份和还原">数据库的备份和还原</h2>
+<pre><code>1. 命令行;
+	* 语法:
+		* 备份: mysqldump -u用户名-p密码&gt;保存的路径
+		* 还原:
+			1.登录数据库
+			2. 创建数据库
+			3. 使用数据库
+			4. 执行文件。source 文件路径
+2. 图形化工具:
+</code></pre>
+<h2 id="多表连接">多表连接</h2>
+<pre><code>1. 笛卡尔积:
+	* 有两个集合A,B .取这两个集合的所有组成情况。
+	* 要完成多表查询，需要消除无用的数据
+2. 多表查询的分类:
+	1. 内连接查询:
+		1. 隐式内连接:使用where条件消除无用数据
+			查询所有员工信息和对应的部门信息
+			SELECT * FROM emp ,dept WHERE emp.dept_ id = dept. id ;
+		2. 显式内连接:
+			* 语法: 
+				select 字段列表 from 表名1 [inner] join 表名2 on 条件
+				例如:
+					* SELECT * FROM emp INNER J0IN dept ON emp.dept_id = dept.id;
+					* SELECT * FROM emp JOIN dept ON emp.dept_ id = dept.id ;
+	2. 外连接查询
+
+	3. 子查询
+</code></pre>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/My-Test/" data-toggle="tooltip" data-placement="top" title="My Test">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://github.com/hyz2696701846" target="_blank">Mygithub</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'rz'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/hyz2696701846">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 狐钥知 2019 
+                    By <a href="http://www.ruozedata.com">若泽数据，企业在职</a> | BigData
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=ruozedata&repo=Bigdata&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.ruozedata.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.ruozedata.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>
