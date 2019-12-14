@@ -2,15 +2,29 @@
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <url>
-        <loc>http://www.ruozedata.com/tags/Hexo/</loc>
-        <lastmod>2019-12-11T10:26:13.237Z</lastmod>
+        <loc>http://www.ruozedata.com/tags/ruozedata/</loc>
+        <lastmod>2019-12-11T10:26:13.255Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>http://www.ruozedata.com/tags/ruozedata/</loc>
-        <lastmod>2019-12-11T10:26:13.255Z</lastmod>
+        <loc>http://www.ruozedata.com/tags/Hexo/</loc>
+        <lastmod>2019-12-14T14:48:21.012Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.ruozedata.com/tags/mysql/</loc>
+        <lastmod>2019-12-14T14:54:39.946Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>http://www.ruozedata.com/tags/jdbc/</loc>
+        <lastmod>2019-12-14T14:59:22.143Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

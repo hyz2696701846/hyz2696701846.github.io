@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          狐钥知的Blog
+          Mysql数据库 - 狐钥知的Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.ruozedata.com/article/MySQL知识点/">
+    <link rel="canonical" href="http://www.ruozedata.com/article/mysql/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,7 +71,7 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/article_header/article_bg.jpg')
+            background-image: url('/img/article_header/article_header.png')
             /*post*/
         
     }
@@ -88,9 +88,11 @@
                     <div class="post-heading">
                         <div class="tags">
                             
+                              <a class="tag" href="/tags/#mysql" title="mysql">mysql</a>
+                            
                         </div>
-                        <h1></h1>
-                        <h2 class="subheading"></h2>
+                        <h1>Mysql数据库</h1>
+                        <h2 class="subheading">学习Mysql知识点总结</h2>
                         <span class="meta">
                             Posted by 狐钥知 on
                             2019-12-12
@@ -459,7 +461,7 @@
 				SELECT * FROM student LIMIT 6,3; --第3萸
 		3. limit 是一个MySQL&quot;方言&quot;|
 </code></pre>
-<h2 id="约束">约束</h2>
+<h4 id="约束">约束</h4>
 <pre><code>1. 概念:对表中的数据进行限定， 保证数据的正确性、有效性和完整性。
 2. 分类:
 1. 主键约束: primary key
@@ -529,7 +531,7 @@
 	3. 在创建表后，添加唯一约束
 		ALTER TABLE stu MODIFY phone_ number VARCHAR(20) UNIQUE;
 </code></pre>
-<h2 id="数据库的设计">数据库的设计</h2>
+<h4 id="数据库的设计">数据库的设计</h4>
 <pre><code>1. 多表之间的关系
 	1. 分类
 		1. 一对一(了解) :
@@ -577,7 +579,7 @@
 		2. 第二范式(2NF) : 在1NF的基础上，非码属性必须完全依赖于候选码(在1NF 基础上消除非主属性对主码的部分函数依赖)
 		3. 第三范式(3NF) :在2NF基础.上,任何非主属性不依赖于其它非主属性(在2NF基础上消除传递依赖)
 </code></pre>
-<h2 id="数据库的备份和还原">数据库的备份和还原</h2>
+<h4 id="数据库的备份和还原">数据库的备份和还原</h4>
 <pre><code>1. 命令行;
 	* 语法:
 		* 备份: mysqldump -u用户名-p密码&gt;保存的路径
@@ -588,10 +590,11 @@
 			4. 执行文件。source 文件路径
 2. 图形化工具:
 </code></pre>
-<h2 id="多表连接">多表连接</h2>
+<h4 id="多表连接">多表连接</h4>
 <pre><code>1. 笛卡尔积:
 	* 有两个集合A,B .取这两个集合的所有组成情况。
 	* 要完成多表查询，需要消除无用的数据
+	
 2. 多表查询的分类:
 	1. 内连接查询:
 		1. 隐式内连接:使用where条件消除无用数据
@@ -603,9 +606,126 @@
 				例如:
 					* SELECT * FROM emp INNER J0IN dept ON emp.dept_id = dept.id;
 					* SELECT * FROM emp JOIN dept ON emp.dept_ id = dept.id ;
+		3. 内连接查询:
+			1. 从哪些表中查询数据
+			2. 条件是什么:
+			3. 查询哪些字段
+
 	2. 外连接查询
+		1. 左外连接:
+			* 语法: 
+				select 字段列表 from 表1 left [outer] join 表2 on条件;
+			* 查询的是左表所有数据以及其交集部分。
+		2. 右外连接:
+			* 语法: 
+				select 字段列表 from 表1 right [outer] join 表2 on条件;
+			* 查询的是右表所有数据以及其交集部分。|
 
 	3. 子查询
+		* 概念：查询中嵌套查询，称嵌套查询为子查询
+		* 子查询不同情况
+			1. 子查询的结果是单行单列的:
+				* 子查询可以作为条件，使用运算符去判断。 运算符: &gt; &gt;= &lt; &lt;= 
+					SELECT * FROM emp WHERE emp.salary &lt; (SELECT AVG(salary) FROM emp);
+			2. 子查询的结果是多行单列的:
+				* 子查询可以作为条件，使用运算符in来判断-查询'财务部'和'市场部'所有的员工信息
+					SELECT id FROM dept WHERE NAME = ' 财务部’OR NAME = '市场部' 
+					SELECT * FROM emp WHERE dept_ id = 3 OR dept. _id = 2;
+					SELECT * FROM emp WHERE dept_ id IN (SELECT id FROM dept WHERE NAME = '财务部’ OR NAME =‘市场部');
+			3. 子查询的结果是多行多列的:
+				* 子查询可以作为一-张虚拟表参与查询
+					--查询员工入职日期是2011-11-11日之后的员工信息和部门信息
+					--子查询
+					SELECT * FROM dept t1 , (SELECT * FROM emp WHERE emp.&quot; join_ _date &gt; ' 2011-11-11') t2WHERE t1.id = t2.dept_ id;
+					--普通内连接
+					SELECT * FROM emp t1,dept t2 WHERE t1.dept_ id = t2. id AND t1.' join_ date’&gt;‘ 2011-11-11'
+</code></pre>
+<h4 id="事务">事务</h4>
+<pre><code>1. 事务的基本介绍
+	1. 概念:
+		如果一个包含多个步骤的业务操作，被事务管理，那么这些操作要么同时成功，要么同时失败。
+	2. 操作:
+		1.开后事务: start transaction;
+		2.回滚: rollback;
+		3.提交: commit;
+	4. MySQL 数据库中事务默认自动提交
+		* 事务提交的两种方式:
+			* 自动提交:
+				* mysql就是自动提交的
+				* 一条DML(增删改)语句会自动提交-次事务。
+			* 手动提交:工
+				* Oracle 数据库默认是手动提交事务
+				* 需要先开启事务，再提交
+		* 修改事务的默认提交方式:
+			* 查看事务的默认提交方式: SELECT @@autocommit; -- 1代表自动提交0 代表手动提交发
+			* 修改默认提交方式: set @@autocommit = e;
+			* 
+2. 事务的四大特征
+	1. 原子性：是不可分割的最小操作单位，要么同时成功，要么同时失败。
+	2. 持久性：当事务提交或回滚后，数据库会持久化的保存数据
+	3. 隔离性：多个事务之间，相互独立。
+	4. 一致性：事务操作前后，数据总量不变，
+
+3.事务的隔离级别(了解)
+	* 概念:多个事务之间隔离的,相互独立的。但是如果多个事务操作同-批数据,则会引发一 些问题，设置不同的隔离级别就可以解决这些问题。
+	* 存在问题:
+		1. 脏读:一个事务，读取到另一个事务中没有提交的数据
+		2. 不可重复读(虚读) :在同一个事务中，两次读取到的数据不一一样。
+		3. 幻读:一个事务操作(DML)数据表中所有记录，另一个事务添加了一条数据,则第一个事务查询不到自己的修改。
+	* 隔离级别:
+		1. read uncommitted :读未提交
+			* 产生的问题:脏读、不可重复读、幻读
+		2. read committed :读已提交(Oracle)
+			* 产生的问题:不可重复读、幻读
+		3. repeatable read :可重复读(MySQL 默认)
+			* 产生的问题:幻读
+		4. serializable :串行化，
+			* 可以解决所有的问题
+		* 注意:隔离级别从小到大安全性越来越高，但是效率越来越低
+		* 数据库查询隔离级别:
+			* select @@tx_ isolation;
+		* 数据库设置隔离级别:
+			* set global transaction isolation level 级别字符串;
+</code></pre>
+<h3 id="dcl">DCL</h3>
+<pre><code>1. 管理用户
+	1. 添加用户:
+		* 语法: CREATE USER '用户名'@'主机名’IDENTIFIED BY '密码';
+	2. 删除用户:
+		* 语法: DROP USER ‘用户名'@'主机名';
+	3. 修改用户密码:
+		* 语法
+			UPDATE USER SET PASSWORD = PASSWORD( '新密码') WHERE USER =.用户名';
+			SET PASSWORD FOR '用户名'@'主机名’= PASSWORD( '新密码');
+		* mysql中忘记了root用户的密码?
+			1. cmd -- &gt; net stop mysql停止mysq1服务
+				* 需要管理员运行该cmd
+				2. 使用无验证方式启动mysq1服务: mysqld --skip- grant-tables
+				3. 打开新的cmd窗口，直接输入mysql命令，敲回车。就可以登录成功
+				4. use. mysq1;
+				5. update user set password = password( '你的新密码') where user = 'root' ;
+				6. 关闭两个窗口
+				7. 打开任务管理器，手动结束mysqld.exe的进程
+				8. 启动mysq1服务9.使用新密码登录。
+
+	4. 查询用户:
+		-- 1.切换到mysq1数据库
+			USE myql;
+		-- 2.查询user表
+			SELECT * FROM USER;
+		* 通配符: %表示可以在任意主机使用用户登录数据库
+2.权限管理
+	1. 查询权限:
+		SHOW GRANTS FOR &quot;用户名@' 主机名';
+		SHOW GRANTS FOR 'lisi'@'%';
+	2. 授予权限:
+		grant 权限列表 on 数据库名.表名 to '用户名'@'主机名';
+	
+		--给张三用户授予所有权限，在任意数据库任意表上
+		GRANT ALL ON *.* TO 'zhangsan'@'localhost';
+	3. 撤销权限:
+		revoke 权限列表 on 数据库名.表名 from '用户名'@'主机名';  
+		IREVOKE UPDATE ON db3.'account’ FROM 'lisi'@'%';
 </code></pre>
 
                 
@@ -614,9 +734,13 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
+                        <li class="previous">
+                            <a href="/article/JDBC/" data-toggle="tooltip" data-placement="top" title="JDBC">&larr; Previous Post</a>
+                        </li>
+                    
                     
                         <li class="next">
-                            <a href="/article/My-Test/" data-toggle="tooltip" data-placement="top" title="My Test">Next Post &rarr;</a>
+                            <a href="/article/ruozedata/" data-toggle="tooltip" data-placement="top" title="Join ruozedata if you have a dream">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -660,6 +784,18 @@
             <!-- Tabe of Content -->
             <!-- Table of Contents -->
 
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#mysql数据库知识点"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Mysql&#x6570;&#x636E;&#x5E93;&#x77E5;&#x8BC6;&#x70B9;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库的基本概念"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5E93;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mysql数据库软件"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">MySQL&#x6570;&#x636E;&#x5E93;&#x8F6F;&#x4EF6;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#sql"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">SQL</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#ddl-操作数据库-表"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">DDL :&#x64CD;&#x4F5C;&#x6570;&#x636E;&#x5E93;&#x3001;&#x8868;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dml-增删改表中数据"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">DML :&#x589E;&#x5220;&#x6539;&#x8868;&#x4E2D;&#x6570;&#x636E;</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dql-查询表中的记录"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">DQL :&#x67E5;&#x8BE2;&#x8868;&#x4E2D;&#x7684;&#x8BB0;&#x5F55;</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#约束"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">&#x7EA6;&#x675F;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据库的设计"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5E93;&#x7684;&#x8BBE;&#x8BA1;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#数据库的备份和还原"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">&#x6570;&#x636E;&#x5E93;&#x7684;&#x5907;&#x4EFD;&#x548C;&#x8FD8;&#x539F;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#多表连接"><span class="toc-nav-number">1.3.3.4.</span> <span class="toc-nav-text">&#x591A;&#x8868;&#x8FDE;&#x63A5;</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#事务"><span class="toc-nav-number">1.3.3.5.</span> <span class="toc-nav-text">&#x4E8B;&#x52A1;</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#dcl"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">DCL</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
                 
             <!-- Sidebar Container -->
             <div class="
@@ -674,6 +810,8 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
+                          <a class="tag" href="/tags/#mysql" title="mysql">mysql</a>
+                        
                     </div>
                 </section>
                 
