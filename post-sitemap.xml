@@ -7,6 +7,14 @@
     </url>
 
     <url>
+        <loc>http://www.ruozedata.com/article/ruozedata/</loc>
+        <lastmod>2019-12-14T15:03:07.131Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.ruozedata.com/article/JDBC/</loc>
         <lastmod>2019-12-14T14:59:22.143Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -25,14 +33,6 @@
     <url>
         <loc>http://www.ruozedata.com/article/hexo-theme-jepson/</loc>
         <lastmod>2019-12-14T14:48:21.012Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>http://www.ruozedata.com/article/ruozedata/</loc>
-        <lastmod>2019-12-11T10:26:13.255Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
