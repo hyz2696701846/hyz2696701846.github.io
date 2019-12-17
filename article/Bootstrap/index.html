@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          狐钥知的Blog
+          Bootstrap - 狐钥知的Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.ruozedata.com/archives/">
+    <link rel="canonical" href="http://www.ruozedata.com/article/Bootstrap/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -71,8 +71,8 @@
 <style type="text/css">
     header.intro-header{
         
-            background-image: url('/img/header_img/archives-widget.jpg')
-            /*page*/
+            background-image: url('/img/article_header/article_header.png')
+            /*post*/
         
     }
     
@@ -85,10 +85,18 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                 
-                    <div class="site-heading">
-                        <h1>狐钥知的Blog</h1>
-                        <!--<hr class="small">-->
-                        <span class="subheading"></span>
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                            
+                        </div>
+                        <h1>Bootstrap</h1>
+                        <h2 class="subheading">学习Bootstrap知识点总结</h2>
+                        <span class="meta">
+                            Posted by 狐钥知 on
+                            2019-12-17
+                        </span>
                     </div>
                 
 
@@ -191,318 +199,232 @@
 
 
     <!-- Main Content -->
-    <!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+    <!-- Modify by Yu-Hsuan Yen -->
 
-<!-- USE SIDEBAR -->
-    <!-- Post Container -->
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
-            
-                
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 archive">
-            <!-- 归档列表 -->
-            
-            
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
 
-             <!-- 归档列表 -->
+                <h2 id="bootstrap">Bootstrap :</h2>
+<pre><code>1. 概念:一个前端开发的框架，Bootstrap, 来自Twitter, 是目前很受欢迎的前端框架Bootstrap 是基于HTML、 Css、Javascript 的，它简洁灵活，使得web开发更加快捷。
+	* 框架:一个半成品软件,开发人员可以在框架基础上，在进行开发，简化编码。
+	* 好处:
+		1. 定义了很多的css样式和js插件。我们开发人员直接可以使用这些样式和插件得到丰富的页面效果。
+		2. 响应式布局。
+			* 同一套页面可以兼容不同分辨率的设备。
+2. 快速入门
+	1.下载Bootstrap
+	2.在项目中将这三个文件夹复制
+	3.创建html页面，引入必要的资源文件
+</code></pre>
+<p>##响应式布局<br>
+	* 同一套页面可以兼容不同分辨率的设备。<br>
+	* 实现:依赖于栅格系统:将一行平均分成12个格子，可以指定元秦占几个格子<br>
+	* 步骤:<br>
+		1. 定义容器。相当于之前的table、<br>
+			* 容器分类:<br>
+				1. container : 两边留白<br>
+				2. container-fluid : 每一种设备都是100%宽度<br>
+		2. 定义行。相当于之前的tr样式: row<br>
+		3. 定义元素。指定该元素在不同的设备上,所占的格子数目。样式: col-设备代号-格子数目<br>
+			* 设备代号:<br>
+				1. xs :超小屏幕手机(&lt;768px) : col-xs-12<br>
+				2. sm:小屏幕平板(2768px)<br>
+				3. md :中等屏幕桌面显示器(2992px)<br>
+				4. 4.1g:大屏幕大桌面显示器(21200px)<br>
+		。注意:<br>
+			1. 一行中如果格子数目超过12，则超出部分自动换行。<br>
+			2. 栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备。<br>
+			3. 如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素占满一整行。</p>
+<h2 id="css样式和js插件">css样式和Js插件</h2>
+<pre><code>全局css样式:
+	* 按钮: class=&quot;btn btn-default&quot;
+	* 图片:
+		* class=&quot;img- responsive&quot; :图片在任意尺寸都占100%
+		* *图片形状
+			*  &lt;img src=&quot;.  alt=&quot;...”class=&quot; img-rounded&quot;&gt; :方形
+			* &lt;img src=&quot;...  alt=&quot;...&quot; class=&quot;img-circle&quot;&gt; :圆形
+			* &lt;img src=&quot;...&quot; alt=&quot;...&quot; class=&quot;img-thumbnail&quot;&gt; :相框
+	* 表格。
+		* table
+		* table- bordered
+		* table-hover
+	* 表单
+		* 给表单项添加: class=&quot;form- control&quot;
+组件:
+	* 导航条
+	* 分页条
 
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2019">
-                    <span class="tag-text">2019</span>
-                </span>
-                <ul>
+插件:
+	* 轮播图
+</code></pre>
+
                 
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    12-17
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/Web/" style="color: #0085a1">
-                        <span>
-                            HTML+CSS+Javascript
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    12-17
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/Bootstrap/" style="color: #0085a1">
-                        <span>
-                            Bootstrap
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    12-12
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/mysql/" style="color: #0085a1">
-                        <span>
-                            Mysql数据库
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    12-12
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/JDBC/" style="color: #0085a1">
-                        <span>
-                            JDBC
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Web/" data-toggle="tooltip" data-placement="top" title="HTML+CSS+Javascript">Next Post &rarr;</a>
+                        </li>
+                    
                 </ul>
-            </div>
-            
-            <div class="one-tag-list">
-                <span class="fa fa-calendar-times-o listing-seperator" id="2015">
-                    <span class="tag-text">2015</span>
-                </span>
-                <ul>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    07-11
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/ruozedata/" style="color: #0085a1">
-                        <span>
-                            Join ruozedata if you have a dream
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                  <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-                 <li >
-                    07-10
-                    <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-                    <a href="/article/hexo-theme-jepson/" style="color: #0085a1">
-                        <span>
-                            [Hexo] Theme Jepson
-                        </span>
-                    </a>
-                    <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-                </li>
-                
-                </ul>
-            </div>
-            
-
-
-        </div>
-    </div>
-</div>
-
-<style type="text/css">
-
-   @media (min-width: 992px) {
-   .archive {
-       margin-left: 8.33333333%;
-       padding-right: 26.333333%;
-   }
-}
-</style>
-
-<style type="text/css">
-   @media (min-width: 1200px){
-   .archive {
-   margin-left: 16.66666667%;
-   padding-right: 16.666667%;
-   }
-}
-</style>
-
 
                 <br>
 
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
                 <!-- require APlayer -->
                 
 
-                <!-- 如果开启评论功能 -->
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bootstrap"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Bootstrap :</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#css样式和js插件"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">css&#x6837;&#x5F0F;&#x548C;Js&#x63D2;&#x4EF6;</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#bootstrap" title="bootstrap">bootstrap</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://github.com/hyz2696701846" target="_blank">Mygithub</a></li>
+                    
+                </ul>
                 
             </div>
-
-          <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
-    
-        <!-- Featured Tags -->
-
-<section>
-    <!-- no hr -->
-    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-    <div class="tags">
-        
-            
-            <a href="/tags/#bootstrap" title="bootstrap" rel="1">bootstrap</a>
-            
-        
-            
-            <a href="/tags/#jdbc" title="jdbc" rel="1">jdbc</a>
-            
-        
-            
-            <a href="/tags/#html" title="html" rel="1">html</a>
-            
-        
-            
-            <a href="/tags/#Hexo" title="Hexo" rel="1">Hexo</a>
-            
-        
-            
-            <a href="/tags/#mysql" title="mysql" rel="1">mysql</a>
-            
-        
-            
-            <a href="/tags/#ruozedata" title="ruozedata" rel="1">ruozedata</a>
-            
-        
+        </div>
     </div>
-</section>
+</article>
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-    <h5><a href="/about/">ABOUT ME</a></h5>
-    <div class="short-about">
 
-        
-            <img id = "avatar_pic" src="/img/avatar/hyz.jpg" />
-        
 
-        
-            <p>狐钥知</p>
-        
 
-        <!-- SNS Link -->
-        <ul class="list-inline">
-            
-            
-            
 
-            
 
-            
 
-            
-                <li>
-                    <a target="_blank"  href="https://github.com/hyz2696701846">
-                        <span class="fa-stack fa-lg">
-                            <i class="fa fa-circle fa-stack-2x"></i>
-                            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                        </span>
-                    </a>
-                </li>
-            
-            
-            
-            
-        </ul>
-    </div>
-</section>
 
-        <hr>
-    
-        
-  <h5>RECENT POSTS</h3>
-  <div class="widget">
-    <ul>
-      
-        <li>
-          <a href="/article/Bootstrap/">Bootstrap</a>
-        </li>
-      
-        <li>
-          <a href="/article/Web/">HTML+CSS+Javascript</a>
-        </li>
-      
-        <li>
-          <a href="/article/JDBC/">JDBC</a>
-        </li>
-      
-        <li>
-          <a href="/article/mysql/">Mysql数据库</a>
-        </li>
-      
-        <li>
-          <a href="/article/ruozedata/">Join ruozedata if you have a dream</a>
-        </li>
-      
-    </ul>
-  </div>
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'rz'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
-        <hr>
-    
-        <!-- Friends Blog -->
 
-<h5>FRIENDS</h5>
-<ul class="list-inline">
-
-    
-        <li><a href="https://github.com/hyz2696701846" target="_blank">Mygithub</a></li>
-    
-</ul>
-
-        <hr>
-    
-        
-    <h5>ARCHIVES</h5>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">2</span></li></ul>
-    </div>
-
-        <hr>
-    
-</div>
-
-        
-    </div>
-</div>
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
 
 
     <!-- Footer -->
