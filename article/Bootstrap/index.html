@@ -224,25 +224,26 @@
 	2.在项目中将这三个文件夹复制
 	3.创建html页面，引入必要的资源文件
 </code></pre>
-<p>##响应式布局<br>
-	* 同一套页面可以兼容不同分辨率的设备。<br>
-	* 实现:依赖于栅格系统:将一行平均分成12个格子，可以指定元秦占几个格子<br>
-	* 步骤:<br>
-		1. 定义容器。相当于之前的table、<br>
-			* 容器分类:<br>
-				1. container : 两边留白<br>
-				2. container-fluid : 每一种设备都是100%宽度<br>
-		2. 定义行。相当于之前的tr样式: row<br>
-		3. 定义元素。指定该元素在不同的设备上,所占的格子数目。样式: col-设备代号-格子数目<br>
-			* 设备代号:<br>
-				1. xs :超小屏幕手机(&lt;768px) : col-xs-12<br>
-				2. sm:小屏幕平板(2768px)<br>
-				3. md :中等屏幕桌面显示器(2992px)<br>
-				4. 4.1g:大屏幕大桌面显示器(21200px)<br>
-		。注意:<br>
-			1. 一行中如果格子数目超过12，则超出部分自动换行。<br>
-			2. 栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备。<br>
-			3. 如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素占满一整行。</p>
+<h2 id="响应式布局">响应式布局</h2>
+<pre><code>* 同一套页面可以兼容不同分辨率的设备。
+* 实现:依赖于栅格系统:将一行平均分成12个格子，可以指定元秦占几个格子
+* 步骤:
+	1. 定义容器。相当于之前的table、
+		* 容器分类:
+			1. container : 两边留白
+			2. container-fluid : 每一种设备都是100%宽度
+	2. 定义行。相当于之前的tr样式: row
+	3. 定义元素。指定该元素在不同的设备上,所占的格子数目。样式: col-设备代号-格子数目
+		* 设备代号:
+			1. xs :超小屏幕手机(&lt;768px) : col-xs-12
+			2. sm:小屏幕平板(2768px)
+			3. md :中等屏幕桌面显示器(2992px)
+			4. 4.1g:大屏幕大桌面显示器(21200px)
+	。注意:
+		1. 一行中如果格子数目超过12，则超出部分自动换行。
+		2. 栅格类属性可以向上兼容。栅格类适用于与屏幕宽度大于或等于分界点大小的设备。
+		3. 如果真实设备宽度小于了设置栅格类属性的设备代码的最小值，会一个元素占满一整行。
+</code></pre>
 <h2 id="css样式和js插件">css样式和Js插件</h2>
 <pre><code>全局css样式:
 	* 按钮: class=&quot;btn btn-default&quot;
@@ -324,7 +325,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bootstrap"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Bootstrap :</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#css样式和js插件"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">css&#x6837;&#x5F0F;&#x548C;Js&#x63D2;&#x4EF6;</span></a></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#bootstrap"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Bootstrap :</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#响应式布局"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x54CD;&#x5E94;&#x5F0F;&#x5E03;&#x5C40;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#css样式和js插件"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">css&#x6837;&#x5F0F;&#x548C;Js&#x63D2;&#x4EF6;</span></a></li></ol>
         
         </div>
       </aside>
