@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/ironman-draw.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <title>
+        
+          Servlet&amp;Http - 狐钥知的Blog
+        
+    </title>
+
+    <link rel="canonical" href="http://www.ruozedata.com/article/Servlet&amp;&amp;Http/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS --> 
+    <link rel="stylesheet" href="/css/beantech.min.css">
+
+    <link rel="stylesheet" href="/css/donate.css">
+    
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css">
+
+    <link rel="stylesheet" href="/css/widget.css">
+
+    <link rel="stylesheet" href="/css/rocket.css">
+
+    <link rel="stylesheet" href="/css/signature.css">
+
+    <link rel="stylesheet" href="/css/toc.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            background-image: url('/img/article_header/article_header.png')
+            /*post*/
+        
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#servlet http" title="servlet http">servlet http</a>
+                            
+                        </div>
+                        <h1>Servlet&amp;Http</h1>
+                        <h2 class="subheading">Servlet和Http知识点总结</h2>
+                        <span class="meta">
+                            Posted by 狐钥知 on
+                            2019-12-21
+                        </span>
+                    </div>
+                
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">狐钥知的Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    <!-- Modify by Yu-Hsuan Yen -->
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="servletserver-applet">Servlet：server applet</h2>
+<pre><code>1. 概念：运行在服务器端的小程序
+	* Servlet就是一个接口，定义了Java类被浏览器访问到(tomcat识别)的规则。
+	* 将来我们自定义一个类，实现Servlet接口，复写方法。
+2. 快速入门：
+	1. 创建JavaEE项目
+	2. 定义一个类，实现Servlet接口
+		public class ServletDemo1 implements Servlet
+	3. 实现接口中的抽象方法
+	4. 配置Servlet
+		在web.xml中配置：
+		&lt;!--配置Servlet --&gt;
+		&lt;servlet&gt;
+			&lt;servlet-name&gt;demo1&lt;/servlet-name&gt;
+			&lt;servlet-class&gt;cn.itcast.web.servlet.ServletDemo1&lt;/servlet-class&gt;
+		&lt;/servlet&gt;
+		        
+		&lt;servlet-mapping&gt;
+			&lt;servlet-name&gt;demo1&lt;/servlet-name&gt;
+			&lt;url-pattern&gt;/demo1&lt;/url-pattern&gt;
+		&lt;/servlet-mapping&gt;
+</code></pre>
+<img src="img/servlet_run.jpg">
+<pre><code>3. 执行原理：
+	1. 当服务器接受到客户端浏览器的请求后，会解析请求URL路径，获取访问的Servlet的资源路径
+	2. 查找web.xml文件，是否有对应的&lt;url-pattern&gt;标签体内容。
+	3. 如果有，则在找到对应的&lt;servlet-class&gt;全类名
+	4. tomcat会将字节码文件加载进内存，并且创建其对象
+	5. 调用其方法
+
+4. Servlet中的生命周期方法：
+	1. 被创建：执行init方法，只执行一次
+		* Servlet什么时候被创建？
+			* 默认情况下，第一次被访问时，Servlet被创建
+			* 可以配置执行Servlet的创建时机。
+				* 在&lt;servlet&gt;标签下配置
+					1. 第一次被访问时，创建
+						* &lt;load-on-startup&gt;的值为负数
+					2. 在服务器启动时，创建
+						* &lt;load-on-startup&gt;的值为0或正整数
+		* Servlet的init方法，只执行一次，说明一个Servlet在内存中只存在一个对象，Servlet是单例的
+			* 多个用户同时访问时，可能存在线程安全问题。
+			* 解决：尽量不要在Servlet中定义成员变量。即使定义了成员变量，也不要修改其值
+	
+	2. 提供服务：执行service方法，执行多次
+		* 每次访问Servlet时，Service方法都会被调用一次。
+	3. 被销毁：执行destroy方法，只执行一次
+		* Servlet被销毁时执行。服务器关闭时，Servlet被销毁
+		* 只有服务器正常关闭时，才会执行destroy方法。
+		* destroy方法在Servlet被销毁之前执行，一般用于释放资源
+5. Servlet3.0：
+	* 好处：
+		* 支持注解配置。可以不需要web.xml了。        
+	
+	* 步骤：
+		1. 创建JavaEE项目，选择Servlet的版本3.0以上，可以不创建web.xml
+		2. 定义一个类，实现Servlet接口
+		3. 复写方法
+		4. 在类上使用@WebServlet注解，进行配置
+			* @WebServlet(&quot;资源路径&quot;)
+			* urlpartten：Servlet虚拟访问路径
+			
+			@Target({ElementType.TYPE})
+			@Retention(RetentionPolicy.RUNTIME)
+			@Documented
+			public @interface WebServlet {
+				String name() default &quot;&quot;;//相当于&lt;Servlet-name&gt;
+				                
+				String[] value() default {};//代表urlPatterns()属性配置
+				                
+				String[] urlPatterns() default {};//相当于&lt;url-pattern&gt;
+				                
+				int loadOnStartup() default -1;//相当于&lt;load-on-startup&gt;
+				                
+				WebInitParam[] initParams() default {};
+				                
+				boolean asyncSupported() default false;
+				                
+				String smallIcon() default &quot;&quot;;
+				                
+				String largeIcon() default &quot;&quot;;
+				
+				String description() default &quot;&quot;;
+				
+				String displayName() default &quot;&quot;;
+			}
+6. Servlet的体系结构
+	Servlet是一个接口	
+		|
+	GenericServlet 实现了Servlet方法，是一个抽象类
+		|
+	HttpServlet 实现了Servlet方法，也是一个抽象类
+	
+	* GenericServlet：将Servlet接口中其他的方法做了默认空实现，只将service()方法作为抽象
+		* 将来定义Servlet时，可以继承GenericServlet，实现service（）方法即可
+	* HttpServlet：对http协议的一种封装，简化操作
+		1. 定义类继承HttpServlet
+		2. 复写doGet/doPost方法
+
+7. Servlet相关配置 I
+	1. urlpartten:Servlet访问路径
+	1. 一个Servlet可以定义多个访问路径: @WebServlet({&quot;/d4&quot; ,&quot;/dd4&quot; , &quot;/ddd4&quot;})
+	2. 路径定义规则:
+		1. /xxx
+		2. /xxx/xxx:多层路径,目录结构
+		3. *.do
+</code></pre>
+<h2 id="http">HTTP :</h2>
+<img src="img/http.jpg">
+<pre><code>* 概念:Hyper. Text Transfer Protocol 超文本传输协议
+* 传输协议:定义了，客户端和服务器端通信时，发送数据的格式*特点:
+	1. 基于τCP/ IP的高级协议
+	2. 默认端口号:80
+	3. 基于请求/响应模型的:一次请求对应- -次响应
+	4. 无状态的:每次请求之间相互独立，不能交互数据
+* 历史版本:
+	* 1.0: 每- -次请求响应都会建立新的连接
+	* 1.1: 复用连接
+
+* 请求消息数据格式
+	1. 请求行
+		请求方式 请求url 请求协议/版本
+		GET /login.html    HTTP/1.1
+		
+		* 请求方式：
+			* HTTP协议有7中请求方式，常用的有2种
+				* GET：
+					1. 请求参数在请求行中，在url后。
+					2. 请求的url长度有限制的
+					3. 不太安全
+				* POST：
+					1. 请求参数在请求体中
+					2. 请求的url长度没有限制的
+					3. 相对安全
+
+	2. 请求头：客户端浏览器告诉服务器一些信息
+		请求头名称: 请求头值
+		* 常见的请求头：
+			1. User-Agent：浏览器告诉服务器，我访问你使用的浏览器版本信息
+				* 可以在服务器端获取该头的信息，解决浏览器的兼容性问题
+			2. Referer：http://localhost/login.html
+				* 告诉服务器，我(当前请求)从哪里来？
+				* 作用：
+					1. 防盗链：前些年存在这一现象，个体户创建自己的网站，然后将自己的网站指向别的大型网站，像一些视频网站，由于视频的版权费很昂贵，个体户网站通过这一方式盗用别的大视频网站的连接，会导致大网站缺失一些应有的流量，所以就有了防盗链这一说
+					2. 统计工作：比如网站想统计从各个网站进入自己网站的数量多少，可以通过referer来判断
+
+	3. 请求空行
+		空行，就是用于分割POST请求的请求头，和请求体的。
+	4. 请求体(正文)：
+		* 封装POST请求消息的请求参数的
+
+	* 字符串格式：
+	POST /login.html HTTP/1.1
+	Host: localhost
+	User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64; rv:68.0) Gecko/20100101 Firefox/68.0
+	Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+	Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+	Accept-Encoding: gzip, deflate
+	Content-Type: application/x-www-form-urlencoded
+	Content-Length: 17
+	Connection: keep-alive
+	Referer: http://localhost/login.html
+	Upgrade-Insecure-Requests: 1
+	username=张三
+
+
+* 响应消息数据格式
+	1. 响应行	
+		1. 组成:协议/版本 响应状态码 状态码描述
+		2. 响应状态码:服务器告诉客户端浏览器本次请求和响应的一个状态。
+			1. 状态码都是3位数字
+			2. 分类:
+				1. 1xx: 服务器就收客户端消息，但没有接受完成，等待一段时间后， 发送1xx多状态码
+				2. 2xx:成功。代表:200
+				3. 3xx :重定向。代表: 302(重定向)，304(访问缓存)
+				4. 4xx:客户端错误。
+					* 代表:
+						* 404 (请求路径没有对应的资源)
+						* 405:请求方式没有对应的doxxx方法
+				5. 5xx: 服务器端错误。代表: 500(服务器内部出现异常)
+	2. 响应头:
+		1. 格式:头名称:值
+		2. 常见的响应头:
+			1. Content - Type :服务器告诉客户端本次响应体数据格式以及编码格式
+			2. Content -disposition :服务器告诉客户端以什么格式打开响应体数据
+				* 值:
+					* in-line: 默认值,在当前页面内打开
+					* attachment ; filename=xxx :以附件形式打开响应体。文件下载
+	3. 响应空行
+	4. 响应体:传输的数据
+	* 响应字符串格式
+		HTTP/2.0 200 OK
+		Content -Type: text/html ; charset=UTF -8Content-Length: 101
+		Date: Wed, 06 Jun 2018 07:08:42 GMT
+	
+		&lt;html&gt;
+			&lt;head&gt;
+			&lt;title&gt;$Title$&lt;/title&gt;
+			&lt;/head&gt;
+			&lt;body&gt;
+				hello，response
+			&lt;/body&gt;
+		&lt;/html&gt;
+</code></pre>
+<img src="img/request_response.jpg">
+<h2 id="request">Request :</h2>
+<pre><code>1. request对象和response对 象的原理
+	1. request和response对象是由服 务器创建的。我们来使用它们
+	2. request对象是来获取请求消息，response对象是来设置 响应消息
+
+2. request对象继承体系结构:
+	ServletRequest  --接口
+		|继承
+	HttpServletRequest -- 接口
+		|实现
+	org.apache.catalina.connector.RequestFacade类(tomcat)
+
+3. request功能
+	1.获取请求消息数据
+		1.获取请求行数据
+			* GET /day14/ demo1 ?name=zhangsan HTTP/1.1
+			* 方法:
+			1. 获取请求方式: GET
+				* string getMethod()
+			2. (*)获取虚拟目录: /day14
+				* string getContextpath()
+			3. 获取Servlet路径: /demo1
+				* string getservletpath()
+			4. 获取get方式请求参数: name-zhangsan
+				* string getquerystring()
+			5. (* )获取请求URI : /day14/demo1
+				* String getRequestURI(): / day14/ demo1
+				* StringBuffer getRequestURL() :http://localhost/day14/ demo1
+				
+				* URI:统一资源标识符：/day14/ demo1
+				* URL:统一资源定位符：http://localhost/day14/ demo1
+			6. 获取协议及版本: HTTP/1.1
+				* string getProtocol()
+			7. 获取客户机的IP地址:
+				* string getRemoteAddr()
+		2. 获取请求头数据
+			*方法:
+				(* )string getHeadet(string name) :通过请求头的名称获取请求头的值
+				* Enumerat ion&lt;string&gt; getHeaderNames() :获取所有的请求头名称
+		3. 获取站求体数据:
+			* 请求体:只有POST站求方式，才有请求体，在请求体中封装了POST请求的站求参数事
+			* 步骤:
+				1. 获取流对象
+					* BufferedReader getReader() ;获取字符输入流，只能操作字符数据
+					* Servlet Inputstream getInputstream() :获取字节输入流，可以操作所有类型数据
+						* 在文件上传知识点后讲解
+				2. 再从流对象中拿数据
+
+
+	2. 其他功能:
+		1. 获取请求参数通用方式：无论get还是post请求方式都可以使用下列方法来获取请求参数
+			1. string getparameter(string name) :根据参数名称获取参数username=zs&amp;password-123
+			2. string[] getParametervalues(String name ) :根据参数名称获取参数值的数组hobby=xx&amp;hobby=game
+			3. Enumeration&lt;string&gt; getPar ameterNames() :获取所有计求的参数名称
+			4. Map&lt;string, string[]&gt; getParameterMap(): 获取所有参数的map集合
+			* 中文乱码问题
+				tomcat8中
+				get方法中的乱码问题已经解决
+				post方法会乱码：
+					在获取参数之前，设置request的编码request.setCharacterEncoding(&quot;utf-8&quot;);
+			
+		2. 请求转发: -种在服务器内部的资源跳转方式
+			1. 步骤:
+				1. 通过request对象获取请求转发器对象: RequestDispatcher getRequestDispatcher(String path)
+				2. 使用RequestDi spatcher对象来进行转发: forward(ServletRequest request, ServletResponse response)
+			2. 特点:
+				1. 浏览器地址栏路径不发生变化
+				2. 只能转发到当前服务器内部资源中。
+				3. 转发是-次请求
+
+		3. 共享数据:
+			* 域对象:一个有作用范围的对象， 可以在范围内共享数据
+			* request域 :代表一次请求的范围，一般用于请求转 发的多个资源中共享数据
+			* 方法:
+				1. void setAttribute(String name ,object obj): 存储数据
+				2. object getAttitude(string name ) :通过键获取值
+				3. void removeAttribute(String name) :通过键移除键值对
+
+		4. 获取ServletContext
+			 ServletContext getServletContext()
+</code></pre>
+<p>##案例:用户登录<br>
+	* 用户登录案例需求:<br>
+		1. 编写login. html登录页面<br>
+			username &amp; password两个输入框<br>
+		2. 使用ruid数据库连接池技术,操作mysql, day14数据库中user表<br>
+		3. 使用JdbcTemplate技术封装JDBC<br>
+		4. 登录成功跳转到successServlet展示:登录成功!用户名，欢迎您<br>
+		5. 登录失败跳转到Failservlet展示:登录失败，用户名或密码错误</p>
+<img src="img/test.jpg">	
+<pre><code>* 开发步骤
+	1. 创建项目，导入html页面，配置文件，jar包
+	2. 创建数据库环境
+	3. 创建包com.hyz.domain,创建User类
+	4. 创建包com.hyz.util，创建类jdbc工具类JDBCUtils，获取连接池
+	5. 创建包com.hyz.Dao,创建UseDaor类，提供login方法
+	6. 写一个类测试上面这个方法能不能实行
+	7. 编写com.hyz.web.servlet.LoginServlet类
+	8. login.html中form表单的action路径的写法
+		* 虚拟路径+Servlet的资源路径
+	9. BeanUtils工具类，简化数据封装
+		* 用于封装JavaBean的
+			1. JavaBean :标准的Java类
+				1. 要求:
+					1. 类必须被public修饰
+					2. 必须提供空参的构造器
+					3. 成员变量必须使用private修饰
+					4. 提供公共setter和getter方法
+				2. 功能:封装数据
+			2. 概念:
+				成员变量:
+				属性: setter和getter方法截取后的产物
+				例如: getusername() --&gt; username--&gt;. username
+			3. 方法:
+				1. setProperty()，对属性进行赋值
+				2. getProperty()，得到属性的值
+				3. populate(Object obj,Map map)将map集合的键值对信息，封装到对应的JavaBean对象中
+</code></pre>
+<h2 id="response对象">Response对象</h2>
+<pre><code>* 功能;设置响应消息
+	1. 设置响应行
+		1. 格式: HTTP/1.1 200 ok
+		2. 设置状态码: setstatus(int sc)
+	2. 设置响应头: setHeader(String name, string value)
+	3. 设置响应体:
+		* 使用步骤:
+			1. 获取输出流
+				* 字符输出流: Printwriter getwriter()
+				* 字节输出流: Servletoutputstream getoutputstream( )
+			2. 使用输出流，将数据输出到客户端浏览器
+
+* 案例:
+	1. 完成重定向
+		* 重定向:资源跳转的方式*代码实现:
+			//1.设置状态码为302
+			response. setstatus(302);
+			//2.设置响应头location
+			response. setHeader( &quot;location&quot;,&quot;/day15/responseDemo2&quot;);*/
+			
+			//简单的重定向方法
+			response. sendRedirect(&quot;/day15/responseDemo2&quot;);
+
+		* 重定向的特点: redirect
+			1. 地址栏发生变化
+			2. 重定向可以访问其他站点(服务器)的资源
+			3. 重定向是两次请求。不能使用request对象来共享数据
+		* 转发的特点: forward
+			1. 转发地址栏路径不变
+			2. 转发只能访问当前服务器下的资源
+			3. 转发是一次请求，可以使用request对象来共享数据
+		* forward和redirect 区别
+		
+		* 路径写法
+			1.路径分类
+				1.相对路径:通过相对路径不可以确定唯一-资源
+					如: ./index. html
+					* 不以/开头，以.开头路径
+					
+					* 规则:找到当前资源和目标资源之间的相对位置关系
+						* ./:当前目录
+						* ../:后退一-级目录
+				2.绝对路径:通过绝对路径可以确定唯一资源
+					* 如:http://localhost/day15/responseDemo2 /day15/responseDemo2
+					* 以/开头的路径
+					
+					* 规则:判断定义的路径是给谁用的?判断请求将来从哪儿发出
+						* 给客户端浏览器使用:需要加虚拟目录(项目的访问路径)
+						* 建议虚拟目录动态获取: request. getContextPath()
+						* &lt;a&gt;，&lt;form&gt; 重定向...
+					* 给服务器使用:不需要加虚拟目录
+						* 转发路径  
+
+	2. 服务器输出字符数据到浏览器
+		* 步骤:
+			1. 获取字符输出流
+			2. 输出数据
+		注意:
+			* 乱码问题:
+				1. Printwriter pw = response . getwriter() ;获取的流的默认编码是ISO- 8859-1
+				2. 设置该流的默认编码
+				3. 告诉浏览器响应体使用的编码
+				
+				//简单的形式，设置编码,是在获取流之前设置
+				response. setContentType( &quot;text/html ;charset=utf-8&quot;);
+
+	3. 服务器输出字节数据到浏览器
+		* 步骤
+			1. 设置流的默认编码
+				response. setContentType( &quot;text/html ;charset=utf-8&quot;);
+			2. 获取字节输出流
+				ServletOutputStream os = response.getOutputStream();
+			3. 输出数据 
+				os.write(&quot;你好啊，response&quot;.getBytes(&quot;utf-8&quot;));
+
+	4. 验证码
+		1. 本质：图片
+		2. 目的：防止恶意表单注册
+</code></pre>
+<h2 id="servletcontext对象">ServletContext对象:</h2>
+<pre><code>1. 概念:代表整个web应用，可以和程序的容器(服务器)来通信
+2. 获取:
+	1. 通过request对象获取
+		request.getservletContext();
+	2. 通过HttpServlet获取
+		this.。getservletContext(); ;
+	3. 功能:
+		1. 获取MIME类型:
+		* MIME类型:在互联网通信过程中定义的一种文件数据类型
+			* 格式:大类型/小类型 text/html  image/jpeg
+			
+			* 获取: string getMimeType(string file) 
+	2. 域对象:共享数据
+		1. setAttribute(String name ,object value)
+		2. getAttribute(String name )
+		3. removeAttribute(String name) 
+		* Servletcontext对象范围 :所有用户所有请求的数据
+
+	3. 获取文件的真实(服务器)路径
+		方法：String getRealPath(String path)
+</code></pre>
+<p>##案例<br>
+	* 文件下载需求:<br>
+		1. 页面显示超链接<br>
+		2. 点击超链接后弹出下载提示框<br>
+		3. 完成图片文件下载</p>
+<pre><code>* 分析:
+	1. 超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析,则弹出下载提示框。不满足需求
+	2. 任何资源都必须弹出下载提示框
+	3. 使用响应头设置资源的打开方式:
+		* content -disposition: attachment ;filename=xxx
+* 步骤:
+	1. 定义页面，编辑超链接href属性，指向Servlet, 传递资源名称filename
+	2. 定义servlet
+		1. 获取文件名称
+		2. 使用字节输入流加载文件进内存
+		3. 指定response的响应头: content-disposition:attachment; filename=xxx
+		4. 将数据写出到response输出流
+
+* 问题
+	* 中文乱码
+		public static String getFileName(String agent,String filename) throws UnsupportedEncodingException {
+	        if(agent.contains(&quot;MSIE&quot;)){
+	            //IE浏览器
+	            filename = URLEncoder.encode(filename,&quot;utf-8&quot;);
+	            filename = filename.replace(&quot;+&quot;,&quot; &quot;);
+	        }else if(agent.contains(&quot;Firfox&quot;)){
+	            //火狐浏览器
+	            BASE64Encoder base64Encoder = new BASE64Encoder();
+	            filename = &quot;=?utf-8?B?&quot; + base64Encoder.encode(filename.getBytes(&quot;utf-8&quot;)) + &quot;?=&quot;;
+	        }
+	        else {
+	            //其他浏览器
+	            filename = URLEncoder.encode(filename,&quot;utf-8&quot;);
+	        }
+	        return filename;
+		}
+</code></pre>
+
+                
+
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                        <li class="previous">
+                            <a href="/article/Cookie&Session/" data-toggle="tooltip" data-placement="top" title="会话技术">&larr; Previous Post</a>
+                        </li>
+                    
+                    
+                        <li class="next">
+                            <a href="/article/Tomcat/" data-toggle="tooltip" data-placement="top" title="Tomcat">Next Post &rarr;</a>
+                        </li>
+                    
+                </ul>
+
+                <br>
+
+                <!--打赏-->
+                
+                <!--打赏-->
+
+                <br>
+                <!--分享-->
+                
+                    <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                    <!--  css & js -->
+                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!--分享-->
+                <br>                       
+                
+                <!-- require APlayer -->
+                
+
+                <!-- duoshuo Share start -->
+                
+                <!-- 多说 Share end-->
+
+                <!-- 多说评论框 start -->
+                
+                <!-- 多说评论框 end -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+
+                
+
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+  
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">Contents</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#servletserver-applet"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">Servlet&#xFF1A;server applet</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#http"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">HTTP :</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#request"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">Request :</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#response对象"><span class="toc-nav-number">4.</span> <span class="toc-nav-text">Response&#x5BF9;&#x8C61;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#servletcontext对象"><span class="toc-nav-number">5.</span> <span class="toc-nav-text">ServletContext&#x5BF9;&#x8C61;:</span></a></li></ol>
+        
+        </div>
+      </aside>
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#servlet http" title="servlet http">servlet http</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="https://github.com/hyz2696701846" target="_blank">Mygithub</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'rz'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+<!-- chrome Firefox 中文锚点定位失效-->
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<!-- smooth scroll behavior polyfill  -->
+<script type="text/javascript" src="/js/smoothscroll.js"></script>
+<script>
+        $('#toc').on('click','a',function(a){
+            // var isChrome = window.navigator.userAgent.indexOf("Chrome") !== -1;
+            // console.log(window.navigator.userAgent,isChrome)
+                // if(isChrome) {
+                    // console.log(a.currentTarget.outerHTML);
+                    // console.log($(a.currentTarget).attr("href"));
+                    //跳转到指定锚点
+                    // document.getElementById(a.target.innerText.toLowerCase()).scrollIntoView(true);
+                    document.getElementById($(a.currentTarget).attr("href").replace("#","")).scrollIntoView({behavior: 'smooth' });
+                // }
+        })  
+</script>
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                
+                
+                
+
+                
+
+                
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/hyz2696701846">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; 狐钥知 2019 
+                    By <a href="http://www.ruozedata.com">若泽数据，企业在职</a> | BigData
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="91px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=ruozedata&repo=Bigdata&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("http://www.ruozedata.com/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'xxx';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+<!-- Image to hack wechat -->
+<img src="http://www.ruozedata.com/img/icon_wechat.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

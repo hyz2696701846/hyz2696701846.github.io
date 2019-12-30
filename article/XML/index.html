@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Join ruozedata if you have a dream - 狐钥知的Blog
+          XML - 狐钥知的Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.ruozedata.com/article/ruozedata/">
+    <link rel="canonical" href="http://www.ruozedata.com/article/XML/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#ruozedata" title="ruozedata">ruozedata</a>
+                              <a class="tag" href="/tags/#xml" title="xml">xml</a>
                             
                         </div>
-                        <h1>Join ruozedata if you have a dream</h1>
-                        <h2 class="subheading">This is hexo theme Demo.</h2>
+                        <h1>XML</h1>
+                        <h2 class="subheading">XML知识点总结</h2>
                         <span class="meta">
                             Posted by 狐钥知 on
-                            2015-07-11
+                            2019-12-18
                         </span>
                     </div>
                 
@@ -212,32 +212,145 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="欢迎来到若泽数据感谢大家对我们的支持">欢迎来到若泽数据，感谢大家对我们的支持.</h3>
-<hr>
-<h4 id="join-us-if-you-have-a-dream">Join us if you have a dream.</h4>
-<ul>
-<li>
-<p>若泽数据官网<a href="http://ruozedata.com" target="_blank" rel="noopener">http://ruozedata.com</a></p>
-</li>
-<li>
-<p>腾讯课堂(直播课)，搜若泽数据 <a href="http://ruoze.ke.qq.com" target="_blank" rel="noopener">http://ruoze.ke.qq.com</a></p>
-</li>
-<li>
-<p>Bilibili网站(视频),搜若泽数据 <a href="https://space.bilibili.com/356836323" target="_blank" rel="noopener">https://space.bilibili.com/356836323</a></p>
-</li>
-<li>
-<p><a href="https://ruozedata.github.io" target="_blank" rel="noopener">若泽大数据–官方博客(当前)</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ruozedata/BigData/blob/master/blog/BigDataBlogOverview.md" target="_blank" rel="noopener">若泽大数据–博客一览(早期)</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ruozedata/BigData/blob/master/interview/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98.md" target="_blank" rel="noopener">若泽大数据–内部学员面试题</a></p>
-</li>
-</ul>
-<h3 id="扫一扫学一学">扫一扫，学一学:</h3>
-<p><img src="https://github.com/Hackeruncle/BigData/blob/master/blog/pic/%E8%8B%A5%E6%B3%BD%E6%95%B0%E6%8D%AE--%E6%89%AB%E6%8F%8F%E5%85%A5%E5%8F%A3.png?raw=true" alt="image"></p>
-<h5 id="有任何疑问的qq加课程顾问-星星-1952249535-或微信ruoze_star扫码邀请进群与大佬交流">有任何疑问的，QQ加课程顾问-星星: <code>1952249535</code>、或微信(<code>ruoze_star</code>)扫码，邀请进群与大佬交流。</h5>
+                <h2 id="xml">XML:</h2>
+<pre><code>1. 概念: Extensible Markup Language 可扩展标记语言
+	* 可扩展:标签都是自定义的。&lt;user&gt; &lt;student&gt;
+	* 功能
+		* 存储数据:
+		1. 配销文件
+		2. 在网络中传输
+	* xm1与html的区别
+		1. xml标签都是自定义的，html 标签是预定义。
+		2. xml的语法严格，html 语法松敬
+		3. xml 是存储数据的，html是展示数据	
+	* W3c:万维网联盟
+
+
+2. 语法:
+	* 基本语法:
+		1. xml文档的后缀名.xml
+		2. xml第一行必须定义为文档声明
+		3. xml文档中有且仅有一个根标签
+		4. 属性值必须使用引号(单双都可)引起来
+		5. 标签必须正确关闭
+		6. xml标签名称区分大小写
+	* 快速入门
+    &lt;?xml version='1.0' ?&gt;
+	&lt;users&gt;
+		&lt;user id='1'&gt;
+			&lt;name&gt; zhangsan&lt;/ name&gt;&lt;age&gt;23&lt;/age&gt;
+			&lt;gender&gt;male&lt;/ gender&gt;
+			&lt;br/&gt;
+		&lt;/user&gt;
+		&lt;user id='2'&gt;
+			&lt;name&gt;lisi&lt;/name&gt;&lt;age&gt;24&lt;/age&gt;
+			&lt;gender&gt;female&lt;/ gender&gt;
+		&lt;/user&gt;
+	&lt;/users&gt;
+	* 组成部分
+		1. 文档声明
+			1. 格式：&lt;?xml 属性列表 ?&gt;
+			2. 属性列表：
+				* version：版本号
+				* encoding：编码方式。告知解析引擎当前文件使用的字符集，默认值：ISO-8859-1
+				* standalone：是否独立
+					* 取值：
+						* yes：不依赖其他文件
+						* no：依赖其他文件
+		2. 指令（了解）：结合css来展示数据
+		3. 标签:标签名称自定义的
+			* 规则:
+				* 名称可以包含字母、数字以及其他的字符
+				* 名称不能以数字或者标点符号开始
+				* 名称不能以字母xml (或者XML、xml等等)开始
+				* 名称不能包含空格
+
+		4. 属性:
+			id属性值唯一
+		5. 文本:
+			* CDATA区:在该区域中的数据会被原样展示
+				* 格式: &lt;![CDATA[ 数据]]&gt;
+				
+
+	* 约束：规定xml文档的书写规则
+		* 作为框架的使用者：
+			1. 能够在xml中引入约束文档
+			2. 能够简单读懂约束文档
+	*分类:
+		1. DTD:一种简单的约束技术
+		2. Schema:- -种复杂的约束技术
+	* DTD:
+		*引入dtd文档到xm1文档中
+		*内部dtd :特约束规则定义在xml文档中
+		*外部dtd :将约束的规则定义在外部的dtd文件中
+		*本地: &lt;!DOCTYPE 根标签名SYSTEM &quot;dtd文件的位置&quot;&gt;
+		*网络: &lt;!DOCTYPE 根标签名PUBLIC &quot;dtd文件名字”&quot;dtd文件的位置URL&quot;&gt;
+	
+	
+	* Schema:
+		* 引入:
+			1. 填写xml文档的根目录
+			2. 引入xsi前缀 xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema - instance&quot;
+			3. 引入xsd文件命名空间. xsi :schemaLocation= &quot;http://www.itcast.cn/xml student.xsd&quot;
+			4. 为每个xsd约束声明一个前缀，作为标识 xmlns=&quot;http://www.itcast.cn/xml&quot;
+				&lt;students  xmlns:xsi= &quot;http://www.W3.org/2001/XMLSchema-instance&quot;
+					xmlns=&quot;http://www.itcast.cn/xml&quot;
+					xsi:schemaLocation=&quot;http://www.itcast.cn/xml student.xsd&quot;&gt;
+	
+3. 解析:操作xml文档，将文档中的数据读取到内存中
+	* 操作xml文档
+		1.解析(读取) :将文档中的数据读取到内存中
+		2.写入:将内存中的数据保存到xml文档中。持久化的存储
+
+ 	* 解析xm1的方式:
+		1. DOM: 将标记语言文档一次性加载进内存，在内存中形成一颗dom树
+			* 优点:操作方便，可以对文档进行CRUD的所有操作
+			* 缺点:占内存
+		2. SAX: 逐行读取，基于事件驱动的。
+			* 优点:不占内存。
+			* 缺点:只能读取，不能增删改
+	* xml常见的解析器
+		1. JAXP : sun公司提供的解析器，支持dom和sax两种思想
+		2. DOM4J :-款非常 优秀的解析器
+		3. Jsoup: jsoup是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API, 可通过DOM, css以及类似于jQuery的操作方法来取出和操作数据。
+		4. PULL : Android操作系统内置的解析器，sax方式的。
+	* Jsoup: jsoup是一款Java 的HTML解析器，可直接解析某个URL地址、HTML文本内容。它提供了一套非常省力的API, 可通过DOM, css以及类似于jQuery的操作方法来取出和操作数据。
+		* 对象的使用:
+			1. Jsoup: 工具类，可以解析htm1或xml文档，返回Document
+				* parse :解析htm1或xml文档，返回ocument
+				* parse(File in, string charsetName) :解析xml或html文件的。
+				* parse(string html) :解析xm1或html字符串
+				* parse(URL url, int timeoutMillis) :通过网络路径获取指定的html或xm1的文档对象
+			2. Document :文档对象。代表内存中的dom树
+				* 获取Element对象
+					* getElementById(String id) :|
+					* getElementsByTag(string tagName) : 根据标签名称获取元秦对象集合
+					* getElementsByAttribute(string key) :根据属性名称获取元素对象集合
+					* getE lementsByAttributeValue(String key, string value) :根据对应的属性名和属性值获取元素对象集合
+			3. Elements :元素Element对象的集合。可以当做Arraylist&lt;Element&gt;来使用
+			4. Element :元素对象
+				1. 获取子元素对象
+					* getElementById(String id) :|
+					* getElementsByTag(string tagName) : 根据标签名称获取元秦对象集合
+					* getElementsByAttribute(string key) :根据属性名称获取元素对象集合
+					* getE lementsByAttributeValue(String key, string value) :根据对应的属性名和属性值获取元素对象集合
+				2. 获取属性值
+					* String attr(string key) :根据属性名称获取属性值
+				3. 获取文本内容
+					* String text() :获取文本内容
+					* String html():获取标签体的所有内容(包括字标签的字符串内容)
+			5. Node :节点对象
+				* 是Document和Element的父类
+
+	 * 快捷查询方式：
+		1. selector:选择器
+			* 使用的方法：Elements  select​(String cssQuery)
+				cssQuery按照以前css选择器名字来做
+			* 语法：参考Selector类中定义的语法
+		2. XPath：XPath即为XML路径语言，它是一种用来确定XML（标准通用标记语言的子集）文档中某部分位置的语言
+			* 使用Jsoup的Xpath需要额外导入jar包。
+			* 查询w3cshool参考手册，使用xpath的语法完成查询
+</code></pre>
 
                 
 
@@ -246,12 +359,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/mysql/" data-toggle="tooltip" data-placement="top" title="Mysql数据库">&larr; Previous Post</a>
+                            <a href="/article/Tomcat/" data-toggle="tooltip" data-placement="top" title="Tomcat">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/hexo-theme-jepson/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme Jepson">Next Post &rarr;</a>
+                            <a href="/article/Bootstrap/" data-toggle="tooltip" data-placement="top" title="Bootstrap">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -301,7 +414,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#欢迎来到若泽数据感谢大家对我们的支持"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x6B22;&#x8FCE;&#x6765;&#x5230;&#x82E5;&#x6CFD;&#x6570;&#x636E;&#xFF0C;&#x611F;&#x8C22;&#x5927;&#x5BB6;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x652F;&#x6301;.</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#join-us-if-you-have-a-dream"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Join us if you have a dream.</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#扫一扫学一学"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x626B;&#x4E00;&#x626B;&#xFF0C;&#x5B66;&#x4E00;&#x5B66;:</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#有任何疑问的qq加课程顾问-星星-1952249535-或微信ruoze_star扫码邀请进群与大佬交流"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">&#x6709;&#x4EFB;&#x4F55;&#x7591;&#x95EE;&#x7684;&#xFF0C;QQ&#x52A0;&#x8BFE;&#x7A0B;&#x987E;&#x95EE;-&#x661F;&#x661F;: <code>1952249535</code>&#x3001;&#x6216;&#x5FAE;&#x4FE1;(<code>ruoze_star</code>)&#x626B;&#x7801;&#xFF0C;&#x9080;&#x8BF7;&#x8FDB;&#x7FA4;&#x4E0E;&#x5927;&#x4F6C;&#x4EA4;&#x6D41;&#x3002;</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#xml"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">XML:</span></a></li></ol>
         
         </div>
       </aside>
@@ -321,7 +434,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#ruozedata" title="ruozedata">ruozedata</a>
+                          <a class="tag" href="/tags/#xml" title="xml">xml</a>
                         
                     </div>
                 </section>

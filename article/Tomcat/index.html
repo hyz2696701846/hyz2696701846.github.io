@@ -14,11 +14,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <title>
         
-          Join ruozedata if you have a dream - 狐钥知的Blog
+          Tomcat - 狐钥知的Blog
         
     </title>
 
-    <link rel="canonical" href="http://www.ruozedata.com/article/ruozedata/">
+    <link rel="canonical" href="http://www.ruozedata.com/article/Tomcat/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -88,14 +88,14 @@
                     <div class="post-heading">
                         <div class="tags">
                             
-                              <a class="tag" href="/tags/#ruozedata" title="ruozedata">ruozedata</a>
+                              <a class="tag" href="/tags/#tomcat" title="tomcat">tomcat</a>
                             
                         </div>
-                        <h1>Join ruozedata if you have a dream</h1>
-                        <h2 class="subheading">This is hexo theme Demo.</h2>
+                        <h1>Tomcat</h1>
+                        <h2 class="subheading">Tomcat知识点总结</h2>
                         <span class="meta">
                             Posted by 狐钥知 on
-                            2015-07-11
+                            2019-12-19
                         </span>
                     </div>
                 
@@ -212,32 +212,99 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h3 id="欢迎来到若泽数据感谢大家对我们的支持">欢迎来到若泽数据，感谢大家对我们的支持.</h3>
-<hr>
-<h4 id="join-us-if-you-have-a-dream">Join us if you have a dream.</h4>
-<ul>
-<li>
-<p>若泽数据官网<a href="http://ruozedata.com" target="_blank" rel="noopener">http://ruozedata.com</a></p>
-</li>
-<li>
-<p>腾讯课堂(直播课)，搜若泽数据 <a href="http://ruoze.ke.qq.com" target="_blank" rel="noopener">http://ruoze.ke.qq.com</a></p>
-</li>
-<li>
-<p>Bilibili网站(视频),搜若泽数据 <a href="https://space.bilibili.com/356836323" target="_blank" rel="noopener">https://space.bilibili.com/356836323</a></p>
-</li>
-<li>
-<p><a href="https://ruozedata.github.io" target="_blank" rel="noopener">若泽大数据–官方博客(当前)</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ruozedata/BigData/blob/master/blog/BigDataBlogOverview.md" target="_blank" rel="noopener">若泽大数据–博客一览(早期)</a></p>
-</li>
-<li>
-<p><a href="https://github.com/ruozedata/BigData/blob/master/interview/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98.md" target="_blank" rel="noopener">若泽大数据–内部学员面试题</a></p>
-</li>
-</ul>
-<h3 id="扫一扫学一学">扫一扫，学一学:</h3>
-<p><img src="https://github.com/Hackeruncle/BigData/blob/master/blog/pic/%E8%8B%A5%E6%B3%BD%E6%95%B0%E6%8D%AE--%E6%89%AB%E6%8F%8F%E5%85%A5%E5%8F%A3.png?raw=true" alt="image"></p>
-<h5 id="有任何疑问的qq加课程顾问-星星-1952249535-或微信ruoze_star扫码邀请进群与大佬交流">有任何疑问的，QQ加课程顾问-星星: <code>1952249535</code>、或微信(<code>ruoze_star</code>)扫码，邀请进群与大佬交流。</h5>
+                <h2 id="web相关概念回顾">web相关概念回顾</h2>
+<pre><code>1. 软件架构
+	1. C/S：客户端/服务器端
+	2. B/S：浏览器/服务器端
+</code></pre>
+<img src="img/web_review.jpg">
+<pre><code>2. 资源分类
+	1. 静态资源：所有用户访问后，得到的结果都是一样的，称为静态资源.静态资源可以直接被浏览器解析
+		* 如： html,css,JavaScript
+	2. 动态资源:每个用户访问相同资源后，得到的结果可能不一样。称为动态资源。动态资源被访问后，需要先转换为静态资源，在返回给浏览器
+		* 如：servlet/jsp,php,asp....
+
+3. 网络通信三要素
+	1. IP：电子设备(计算机)在网络中的唯一标识。
+	2. 端口：应用程序在计算机中的唯一标识。 0~65536
+	3. 传输协议：规定了数据传输的规则
+		1. 基础协议：
+			1. tcp:安全协议，三次握手。 速度稍慢
+			2. udp：不安全协议。 速度快
+</code></pre>
+<h2 id="web服务器软件">web服务器软件:</h2>
+<pre><code>* 服务器:安装了服务器软件的计算机
+* 服务器软件:接收用户的请求，处理请求，做出响应
+* web服务器软件:接收用户的请求，处理请求，做出响应。
+	* 在web服务器软件中，可以部署web项目，让用户通过浏览器来访问这些项目
+	* web容器
+* 常见的java相关的web服务器软件:
+	* weblogic : oracle公司，大型的JavaEE服务器，支持所有的JavaEE规范， 收费的。
+	* websphere : IBM公司，大型的JavaEE服务器，支持所有的JavaEE规范，收费的
+	* JBOSS : JBOSS公司的，大型的JavaEE服务器， 支持所有的JavaEE规范，收费的。
+	* Tomcat : Apache基金组织，中小型的JavaEE服务器， 仅仅支持少量的JavaEE规范servlet/jsp。开源的，免费的。
+* JavaEE : Java语言在企业级开发中使用的技术规范的总和， 一共规定了13项大的规范
+</code></pre>
+<img src="img/tomcat_package.jpg">
+<pre><code>* Tomcat : web服务器软件
+	1. 下载: http://tomcat.apache.org/
+	2. 安装:解压压缩包即可。	
+		*注意:安装目录建议不要有中文和空格
+	3. 卸载:删除目录就行了
+	4. 启动:
+		* bin/startup.bat , 双击运行该文件即可
+		*访问:浏览器输入: http://localhost; 8080 回车访问自己
+						http://别人的ip:8080 访问别人
+		* 来可能遇到的问题:
+			1.黑窗口一闪而过:
+				*原因没有正确配置JAVA_ HOME环境变量申解决方案:正确配置JAVA_ HOME环境变量
+			2.启动报错:
+				1.暴力:找到占用的端口号，并且找到对应的进程，杀死该进程
+					* netstat - ano
+				2.温柔:修改自身的端口号
+					* conf/server.xml
+					* &lt;Connector port=&quot;8888&quot; protocol=&quot;HTTP/1.1&quot;
+					connectionT imeout=&quot;20000'redirectPort-&quot;8445&quot; /&gt;
+					* 一般会将tomc at的默认端口号修改为80。80端口号为http协议的默认端口号。好处：在访问时，可以不输入端口号
+	
+	5. 关闭
+		1. 正常关闭：
+			* bin/shutdown.bat
+			* ctrl+c
+		2. 强制关闭：
+			* 点击启动窗口的X
+	6. 配置:
+		* 部署项目的方式:
+			1. 直接将项目放到webapps目录下即可。
+				* /hello :项目的访问路径-- &gt;虛拟目录
+				* 简化部署:将项目打成一个war包， 再特war包放置到webapps目录下。
+					* war包会自动解压缩
+			2. 配置conf/server . xml文件
+				在&lt;Host&gt;标签体中配置
+				&lt;Context docBase-&quot;D: \hello&quot; path=&quot; /hehe&quot; /&gt;
+				* docBase:项目存放的路径
+				* path:虚拟目录
+			3. 在conf\catalina\localhost 创建任意名称的xml文件。在文件中编写
+				&lt;Context docBase=&quot;D: \hello&quot; /&gt;
+				* 虚拟目录: xml文件的名称	
+		* 动态项目和静态项目:
+			*目录结构：
+				* java动态项目:
+					--项目名称
+						--WEB-INF
+							-- web. xml :该项目的核心配置文件
+							-- classes目录 ;放置字节码文件
+							-- lib目录:放置项目依赖的jar包
+		*将Jomcat集成到IDEA中，并且创建JavaEE的项目，部署项目。
+</code></pre>
+<h2 id="idea与tomcat的相关配置">IDEA与tomcat的相关配置</h2>
+<pre><code>1. IDEA会为每一个tomcat部署的项目单独建立-份配置文件
+	*查看控制台的1og : using CATALINA_ BASE: &quot;C: \users\fqy\. IntelliJIdea2018. 1\system\tomcat\_ itcast&quot;
+2. 工作空间项目和  tomcat部署的web项目
+	* tomcat真正访问的是“tomc at部署的web项目”，&quot;tomcat部署的web项目” 对应着&quot;工作空间项目”的web目录下的所有资源
+	* WEB- INF目录下的资源不能被浏览器直接访问。
+断点调试:使用&quot;小虫子”启动dubug启动
+</code></pre>
 
                 
 
@@ -246,12 +313,12 @@
                 <ul class="pager">
                     
                         <li class="previous">
-                            <a href="/article/mysql/" data-toggle="tooltip" data-placement="top" title="Mysql数据库">&larr; Previous Post</a>
+                            <a href="/article/Servlet&&Http/" data-toggle="tooltip" data-placement="top" title="Servlet&Http">&larr; Previous Post</a>
                         </li>
                     
                     
                         <li class="next">
-                            <a href="/article/hexo-theme-jepson/" data-toggle="tooltip" data-placement="top" title="[Hexo] Theme Jepson">Next Post &rarr;</a>
+                            <a href="/article/XML/" data-toggle="tooltip" data-placement="top" title="XML">Next Post &rarr;</a>
                         </li>
                     
                 </ul>
@@ -301,7 +368,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">Contents</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#欢迎来到若泽数据感谢大家对我们的支持"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">&#x6B22;&#x8FCE;&#x6765;&#x5230;&#x82E5;&#x6CFD;&#x6570;&#x636E;&#xFF0C;&#x611F;&#x8C22;&#x5927;&#x5BB6;&#x5BF9;&#x6211;&#x4EEC;&#x7684;&#x652F;&#x6301;.</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#join-us-if-you-have-a-dream"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">Join us if you have a dream.</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#扫一扫学一学"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">&#x626B;&#x4E00;&#x626B;&#xFF0C;&#x5B66;&#x4E00;&#x5B66;:</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#有任何疑问的qq加课程顾问-星星-1952249535-或微信ruoze_star扫码邀请进群与大佬交流"><span class="toc-nav-number">2.0.1.</span> <span class="toc-nav-text">&#x6709;&#x4EFB;&#x4F55;&#x7591;&#x95EE;&#x7684;&#xFF0C;QQ&#x52A0;&#x8BFE;&#x7A0B;&#x987E;&#x95EE;-&#x661F;&#x661F;: <code>1952249535</code>&#x3001;&#x6216;&#x5FAE;&#x4FE1;(<code>ruoze_star</code>)&#x626B;&#x7801;&#xFF0C;&#x9080;&#x8BF7;&#x8FDB;&#x7FA4;&#x4E0E;&#x5927;&#x4F6C;&#x4EA4;&#x6D41;&#x3002;</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web相关概念回顾"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">web&#x76F8;&#x5173;&#x6982;&#x5FF5;&#x56DE;&#x987E;</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#web服务器软件"><span class="toc-nav-number">2.</span> <span class="toc-nav-text">web&#x670D;&#x52A1;&#x5668;&#x8F6F;&#x4EF6;:</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#idea与tomcat的相关配置"><span class="toc-nav-number">3.</span> <span class="toc-nav-text">IDEA&#x4E0E;tomcat&#x7684;&#x76F8;&#x5173;&#x914D;&#x7F6E;</span></a></li></ol>
         
         </div>
       </aside>
@@ -321,7 +388,7 @@
                     <h5><a href="/tags/">FEATURED TAGS</a></h5>
                     <div class="tags">
                        
-                          <a class="tag" href="/tags/#ruozedata" title="ruozedata">ruozedata</a>
+                          <a class="tag" href="/tags/#tomcat" title="tomcat">tomcat</a>
                         
                     </div>
                 </section>
